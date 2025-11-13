@@ -17,3 +17,8 @@ dart pub add meta
 dart pub add json_serializable 
 dart pub add json_annotation 
 dart pub add postgres 
+
+redis-server
+
+estudar middleware do postgresql e [id]dart
+estudar rotas do bearer

@@ -1,5 +1,5 @@
-import 'package:backend/items/itemRepository.dart';
-import 'package:backend/lists/listRepository.dart';
+import 'package:backend/repository/items/itemRepository.dart';
+import 'package:backend/repository/lists/listRepository.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 //handler recebe os dados e passa pro middleware que trabalha em cima deles para criar uma resposta pra requisicao e envia de volta para o context poder usar esses dados

@@ -1,1 +1,8 @@
 CREATE DATABASE 2xko;
+
+
+CREATE TABLE lists (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+

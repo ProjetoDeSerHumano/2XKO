@@ -1,26 +1,29 @@
 import 'package:dart_frog/dart_frog.dart';
 import 'package:postgres/postgres.dart';
+
 //conexão com o banco de dados
 Handler middleware(Handler handler) {
   return (context) async {
-    final connection = PostgreSQLConnection(
-      'localhost',
-      5432,
-      '2xko',
-      username: 'postgres',
-      password: 'postdba',
-    );
+    final connection = await Connection.open(
+      Endpoint(
+        host: 'localhost',
+        database: '2xko',
+        username: 'postgres',
+        password: 'postdba',
+      ),
 
-    await connection.open();
+      settings: const ConnectionSettings(
+        sslMode: SslMode.disable,
+      ),
+    );
 
     //retorno dos dados
     final response = await handler
-        .use(provider<PostgreSQLConnection>((_) => connection))
+        .use(provider<Connection>((_) => connection))
         .call(context);
 
     await connection.close();
 
-    return response;
-
+    return response; 
   };
 }
