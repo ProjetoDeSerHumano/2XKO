@@ -1,0 +1,19 @@
+git add .   
+git commit -m ""
+git branch -M master    
+git push -u origin master
+
+psql -U postgres
+\c 2xko postgres
+
+flutter pub add http
+choco shell check
+dart pub get
+flutter pub get
+dart pub global activate dart_frog_cli 
+dart_frog dev
+dart pub add equatable
+dart pub add meta
+dart pub add json_serializable 
+dart pub add json_annotation 
+dart pub add postgres 
