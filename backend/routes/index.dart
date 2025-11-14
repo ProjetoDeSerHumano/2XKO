@@ -1,7 +1,16 @@
-import 'package:dart_frog/dart_frog.dart';
+import 'dart:io';
 
-//requestcontext é uma variavel com todos os detalhes da requisicao
-Response onRequest(RequestContext context) {
-  final value = context.read<String>();
-  return Response(body: value);
+import 'package:backend/repository/lists/listRepository.dart';
+import 'package:dart_frog/dart_frog.dart'; 
+
+Future<Response> onRequest(RequestContext context) async {
+  return switch (context.request.method) {
+    HttpMethod.get => _getLists(context),
+    _ => Future.value(Response(statusCode: HttpStatus.methodNotAllowed))
+  };
+}
+
+Future<Response> _getLists(RequestContext context) async {
+  final lists = context.read<TaskListRepository>().getAllLists();
+  return Response.json(body: lists);
 }
